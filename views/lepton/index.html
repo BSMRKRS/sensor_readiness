@@ -1,0 +1,14 @@
+{{extend 'layout.html'}}
+<h1>This is the lepton/index.html template</h1>
+{{=BEAUTIFY(response._vars)}}
+
+{{if 'message' in globals():}}
+<h2>{{=T('Pylepton Output:')}}</h2>
+<a href="/pylepton_post/default/index">
+    <img src="/pylepton_post/static/images/pic.jpg" alt="Thermal Readout" />
+</a>
+{{elif 'content' in globals():}}
+{{=content}}
+{{else:}}
+{{=BEAUTIFY(response._vars)}}
+{{pass}}

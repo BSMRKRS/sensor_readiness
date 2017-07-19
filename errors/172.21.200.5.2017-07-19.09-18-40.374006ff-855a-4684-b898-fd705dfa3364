@@ -1,0 +1,21 @@
+(dp1
+S'output'
+p2
+S"<type 'exceptions.ValueError'> could not convert string to float: K 0000"
+p3
+sS'layer'
+p4
+S'/home/student/web2py/applications/sensor_readiness/controllers/co2.py'
+p5
+sS'code'
+p6
+S'#import serial\n#import time\n#ser = serial.Serial("/dev/ttyAMA0",9600)\n#ser.write("K 2\\r\\n")\n#ser.flushInput()\ndef co2():\n    #ser.write("Z\\r\\n")\n    #time.sleep(.01)\n    #resp = ser.read(10)\n    #resp = resp[:8]\n    #fltCO2 = float(resp[2:])\n    #return dict(message=fltCO2,resp=resp)\n#def index(): return dict(message="cozir.py")\n\n    import serial\n    import time\n    ser = serial.Serial("/dev/ttyAMA0",9600)\n    ser.write("K 2\\r\\n")\n    ser.flushInput()\n    time.sleep(1)\n    ser.write("Z\\r\\n")\n    time.sleep(.01)\n    resp = ser.read(10)\n    fst=resp.lstrip()[0]\n    tries = 0\n    while((tries < 20) and (fst != \'Z\')):\n    #    resp = ser.read(10)\n    #    fst=resp.lstrip()[0]\n        tries = tries + 1\n    resp8 = resp[:8]\n    fltCO2 = float(resp8[2:])\n    return dict(message=fltCO2,resp=resp,fst=resp.lstrip()[0], tries=tries)\n\nresponse._vars=response._caller(co2)\n'
+p7
+sS'snapshot'
+p8
+(dp9
+sS'traceback'
+p10
+S'Traceback (most recent call last):\n  File "/home/student/web2py/gluon/restricted.py", line 227, in restricted\n    exec ccode in environment\n  File "/home/student/web2py/applications/sensor_readiness/controllers/co2.py", line 34, in <module>\n  File "/home/student/web2py/gluon/globals.py", line 417, in <lambda>\n    self._caller = lambda f: f()\n  File "/home/student/web2py/applications/sensor_readiness/controllers/co2.py", line 31, in co2\n    fltCO2 = float(resp8[2:])\nValueError: could not convert string to float: K 0000\n'
+p11
+s.

@@ -1,0 +1,16 @@
+{{extend 'layout.html'}}
+<h1>This is the co2/index.html template</h1>
+{{=BEAUTIFY(response._vars)}}
+
+{{extend 'layout.html'}}
+<h1>This is the co2/index.html template</h1>
+{{=BEAUTIFY(response._vars)}}
+
+{{if 'message' in globals():}}
+<h2>{{=T('CO2 Reading:')}}</h2>
+<a href="/co2/default/index">
+{{elif 'content' in globals():}}
+{{=content}}
+{{else:}}
+{{=BEAUTIFY(response._vars)}}
+{{pass}}
