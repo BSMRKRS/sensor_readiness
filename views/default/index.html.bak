@@ -10,6 +10,17 @@
 {{=BEAUTIFY(response._vars)}}
 {{pass}}
 
+<script src="{{=URL('static','jquery-2.2.4.min.js')}}"></script>
+{{if 'message' in globals():}}
+<h2>{{=T('Motion Detection:')}}</h2>
+<a href="/pylepton_post/default/index">
+    <img src="http://robo-98.local:8080/?action=stream" alt="Thermal Readout" />
+</a>
+{{elif 'content' in globals():}}
+{{=content}}
+{{else:}}
+{{=BEAUTIFY(response._vars)}}
+{{pass}}
 {{if 'message' in globals():}}
 <h2>{{=T('CO2 Reading:')}}</h2>
 <p onclick='ajax_sensor()'>
@@ -24,7 +35,7 @@
 {{pass}}
 <script type="text/javascript">
  ajax_sensor = function(){
-     
+
     jQuery.ajax({
       url: '/sensor_readiness/co2/co2',
       method: 'get',
@@ -36,7 +47,7 @@
               var note = '';
           }
           jQuery('#co2sensor').html(co2+note);
-          setTimeout(function(){ajax_sensor(0);},500);
+          setTimeout(function(){ajax_sensor(0);},100);
       },
       failure: function(data){}
     });
