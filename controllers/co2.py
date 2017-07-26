@@ -29,3 +29,5 @@ def co2():
         tries = tries + 1
     fltCO2 = float(resp[2:])
     return response.json(dict(message=fltCO2))
+
+

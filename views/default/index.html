@@ -1,3 +1,4 @@
+<script src="{{=URL('static','jquery-2.2.4.min.js')}}"></script>
 {{if 'message' in globals():}}
 <h2>{{=T('Pylepton Output:')}}</h2>
 <a href="/pylepton_post/default/index">
@@ -11,11 +12,33 @@
 
 {{if 'message' in globals():}}
 <h2>{{=T('CO2 Reading:')}}</h2>
-<a href="co2/index">
-    <img src="/pylepton_post/static/images/pic.jpg" alt="Thermal Readout" />
-</a>
+<p onclick='ajax_sensor()'>
+    start co2 sensor 
+</p>
+<p id='co2sensor'>
+</p>
 {{elif 'content' in globals():}}
 {{=content}}
 {{else:}}
 {{=BEAUTIFY(response._vars)}}
 {{pass}}
+<script type="text/javascript">
+ ajax_sensor = function(){
+     
+    jQuery.ajax({
+      url: '/sensor_readiness/co2/co2',
+      method: 'get',
+      success: function(data){
+          var co2=data['message'];
+          if (co2 > 600){
+              var note = ' life detected!';
+          } else {
+              var note = '';
+          }
+          jQuery('#co2sensor').html(co2+note);
+          setTimeout(function(){ajax_sensor(0);},100);
+      },
+      failure: function(data){}
+    });
+  }
+</script>
