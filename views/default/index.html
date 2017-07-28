@@ -1,8 +1,8 @@
 <script src="{{=URL('static','jquery-2.2.4.min.js')}}"></script>
 {{if 'message' in globals():}}
 <h2>{{=T('Pylepton Output:')}}</h2>
-<a href="/pylepton_post/default/index">
-    <img src="/pylepton_post/static/images/pic.jpg" alt="Thermal Readout" />
+<a href="{{URL('pylepton')}}">
+    <img width="320" height="240" src="/sensor_readiness/static/images/pylepton.jpg" alt="Thermal Readout" />
 </a>
 {{elif 'content' in globals():}}
 {{=content}}

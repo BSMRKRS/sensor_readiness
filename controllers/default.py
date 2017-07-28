@@ -58,4 +58,6 @@ def call():
     """
     return service()
 
-
+def pylepton():
+#    subprocess.call("python","pylepton/pylepton_capture","applications/sensor_readiness/static/images/pylepton.jpg")
+    redirect(URL('index'))
