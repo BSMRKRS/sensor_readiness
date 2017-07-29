@@ -1,19 +1,7 @@
 <script src="{{=URL('static','jquery-2.2.4.min.js')}}"></script>
 {{if 'message' in globals():}}
-<h2>{{=T('Pylepton Output:')}}</h2>
-<a href="{{URL('pylepton')}}">
-    <img width="320" height="240" src="/sensor_readiness/static/images/pylepton.jpg" alt="Thermal Readout" />
-</a>
-{{elif 'content' in globals():}}
-{{=content}}
-{{else:}}
-{{=BEAUTIFY(response._vars)}}
-{{pass}}
-
-<script src="{{=URL('static','jquery-2.2.4.min.js')}}"></script>
-{{if 'message' in globals():}}
-<h2>{{=T('Motion Detection:')}}</h2>
-    <img src="http://robo-98.local:8080/?action=stream" alt="Motion Detection" />
+<h2>{{=T('Wrist Cam:')}}</h2>
+    <img src="http://192.168.7.5:8080/?action=stream" alt="Wrist Cam" />
 {{elif 'content' in globals():}}
 {{=content}}
 {{else:}}
