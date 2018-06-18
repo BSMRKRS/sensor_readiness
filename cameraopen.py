@@ -1,6 +1,3 @@
-import setup
-import RoboPiLib as RPL
-import time
 import webbrowser
 
 print "Open front camera, back camera, or both. Enter 'front', 'back', or 'both'"
