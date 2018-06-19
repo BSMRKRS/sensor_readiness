@@ -3,7 +3,7 @@ import RoboPiLib as RPL
 import time as time
 
 #motor pin
-mv =
+mv = 8
 
 #speed
 left = 100
