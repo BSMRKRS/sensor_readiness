@@ -5,9 +5,9 @@ import setup
 import time
 
 #setting up pins for analog sensors
-left =
-rf =
-rb =
+left = 1
+rf = 6
+rb = 5
 
 while True:
     while RPL.analogRead(rf) >= 400:
